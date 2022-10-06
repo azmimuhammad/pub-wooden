@@ -1,13 +1,15 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+
+import CarouselComponent from '../../components/Carousel'
+
+import {CarouselWrapper} from './HomePage.style'
 
 const HomePage = () => {
   return (
     <div>
-      <Link to={'/'}>HOmepage</Link>
-      <br />
-      <br />
-      <Link to={'/about'}>ABOUt</Link>
+      <CarouselWrapper>
+        <CarouselComponent />
+      </CarouselWrapper>
     </div>
   )
 }

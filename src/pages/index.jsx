@@ -3,6 +3,7 @@ import {Routes, Route} from 'react-router-dom'
 import RouterConfig from '../config/Router.config'
 
 import Navbar from '../components/Navbar'
+import Footer from '../components/Footer'
 
 const HomePage = () => {
   return (
@@ -13,6 +14,7 @@ const HomePage = () => {
           return <Route path={item.path} element={item.component} key={i} />
         })}
       </Routes>
+      <Footer />
     </div>
   )
 }
