@@ -8,7 +8,7 @@ import {
   TextLogo,
   Logo,
 } from './Footer.style'
-import {FlexRow} from '../../config/Global.styles'
+import {CustomFlex} from '../../config/Global.styles'
 
 import FacebookIcon from '@mui/icons-material/Facebook'
 import InstagramIcon from '@mui/icons-material/Instagram'
@@ -20,27 +20,27 @@ import LogoTextIcon from '../../assets/images/text-logo.png'
 
 const contact = [
   {
-    link: 'https://ypialukhuwah.com/',
+    link: 'https://www.facebook.com/mmd.azmi',
     icon: <FacebookIcon />,
     name: 'Azmi Muhammad',
   },
   {
-    link: 'https://ypialukhuwah.com/',
+    link: 'https://www.instagram.com/mmd_azmi/',
     icon: <InstagramIcon />,
     name: 'Azmi Muhammad',
   },
   {
-    link: 'https://ypialukhuwah.com/',
+    link: 'mailto:azmim@gmail.com',
     icon: <EmailIcon />,
     name: 'Azmi Muhammad',
   },
   {
-    link: 'https://ypialukhuwah.com/',
+    link: 'https://bit.ly/ChatAzmi',
     icon: <WhatsAppIcon />,
     name: 'Azmi Muhammad',
   },
   {
-    link: 'https://ypialukhuwah.com/',
+    link: 'https://bit.ly/ChatAzmi',
     icon: <CallIcon />,
     name: 'Azmi Muhammad',
   },
@@ -64,7 +64,7 @@ const FooterComponent = () => {
             <Divider style={{width: '50%', alignSelf: 'center'}} />
             {contact.map((item, i) => {
               return (
-                <FlexRow style={{gap: '10px'}} key={i}>
+                <CustomFlex style={{gap: '10px'}} key={i}>
                   {item.icon}
                   <LinkContant
                     href={item.link}
@@ -73,7 +73,7 @@ const FooterComponent = () => {
                   >
                     {item.name}
                   </LinkContant>
-                </FlexRow>
+                </CustomFlex>
               )
             })}
           </Content>

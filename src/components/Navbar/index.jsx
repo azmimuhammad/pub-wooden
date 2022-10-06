@@ -37,7 +37,10 @@ const ResponsiveAppBar = () => {
   }
 
   return (
-    <AppBar position="static">
+    <AppBar
+      position="static"
+      style={{backgroundColor: '#f7f0e6', color: '#9a6725'}}
+    >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <AdbIcon sx={{display: {xs: 'none', md: 'flex'}, mr: 1}} />
@@ -119,7 +122,13 @@ const ResponsiveAppBar = () => {
               <Button
                 key={page}
                 onClick={() => onClickMenu(page.path)}
-                sx={{my: 2, color: 'white', display: 'block'}}
+                sx={{
+                  my: 2,
+                  mx: 1,
+                  color: '#9a6725',
+                  display: 'block',
+                  fontWeight: 'bold',
+                }}
               >
                 {page.name}
               </Button>
