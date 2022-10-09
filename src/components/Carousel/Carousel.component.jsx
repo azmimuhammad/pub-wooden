@@ -3,8 +3,13 @@ import {Carousel} from 'react-responsive-carousel'
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
 
 import {Img} from './Carousel.style'
+import Banner1 from '../../assets/images/banner-001.png'
+import Banner2 from '../../assets/images/banner-002.png'
+import Banner3 from '../../assets/images/banner-003.png'
 
 const CarouselComponent = () => {
+  const banners = [Banner1, Banner2, Banner3]
+
   return (
     <Carousel
       autoPlay
@@ -13,18 +18,13 @@ const CarouselComponent = () => {
       infiniteLoop
       showThumbs={false}
     >
-      <div>
-        <Img src="https://images4.alphacoders.com/936/936378.jpg" />
-        <p className="legend">Legend 1</p>
-      </div>
-      <div>
-        <Img src="https://wallpaperaccess.com/full/2381677.jpg" />
-        <p className="legend">Legend 2</p>
-      </div>
-      <div>
-        <Img src="https://i.pinimg.com/originals/a5/96/e9/a596e9612df0c371926e1f35da81e387.jpg" />
-        <p className="legend">Legend 3</p>
-      </div>
+      {banners.map((val, key) => {
+        return (
+          <div key={key}>
+            <Img src={val} />
+          </div>
+        )
+      })}
     </Carousel>
   )
 }

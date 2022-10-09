@@ -10,6 +10,7 @@ import {
 } from './Footer.style'
 import {CustomFlex} from '../../config/Global.styles'
 
+import YouTubeIcon from '@mui/icons-material/YouTube'
 import FacebookIcon from '@mui/icons-material/Facebook'
 import InstagramIcon from '@mui/icons-material/Instagram'
 import EmailIcon from '@mui/icons-material/Email'
@@ -21,27 +22,32 @@ import LogoTextIcon from '../../assets/images/text-logo.png'
 const contact = [
   {
     link: 'https://www.facebook.com/mmd.azmi',
-    icon: <FacebookIcon />,
+    icon: <FacebookIcon sx={{color: '#4267B2'}} />,
     name: 'Azmi Muhammad',
   },
   {
     link: 'https://www.instagram.com/mmd_azmi/',
-    icon: <InstagramIcon />,
+    icon: <InstagramIcon sx={{color: '#C13584'}} />,
     name: 'Azmi Muhammad',
   },
   {
     link: 'mailto:azmim@gmail.com',
-    icon: <EmailIcon />,
+    icon: <EmailIcon sx={{color: '#BB001B'}} />,
     name: 'Azmi Muhammad',
   },
   {
     link: 'https://bit.ly/ChatAzmi',
-    icon: <WhatsAppIcon />,
+    icon: <WhatsAppIcon sx={{color: '##5BF377'}} />,
     name: 'Azmi Muhammad',
   },
   {
     link: 'https://bit.ly/ChatAzmi',
-    icon: <CallIcon />,
+    icon: <CallIcon sx={{color: '#282828'}} />,
+    name: 'Azmi Muhammad',
+  },
+  {
+    link: 'https://www.youtube.com/',
+    icon: <YouTubeIcon sx={{color: '#FF0000'}} />,
     name: 'Azmi Muhammad',
   },
 ]

@@ -4,7 +4,7 @@ import {Typography} from '@mui/material'
 export const FooterWrapper = styled.div`
   bottom: 0;
   width: 100%;
-  background-color: #f7f0e6;
+  background-color: #f2f2f2;
   box-shadow: 0px -2px 3px rgba(0, 0, 0, 0.16);
 `
 
