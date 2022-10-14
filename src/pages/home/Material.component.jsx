@@ -14,6 +14,8 @@ import {
 } from '../../config/Global.styles'
 import {ProductExampleImage} from './HomePage.style'
 
+import Zoom from 'react-reveal/Zoom'
+
 import FeaturedPlayListIcon from '@mui/icons-material/FeaturedPlayList'
 import RoomPreferencesIcon from '@mui/icons-material/RoomPreferences'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
@@ -55,10 +57,10 @@ const product = [
 ]
 
 const MaterialComponent = () => {
-  const [expanded, setExpanded] = React.useState(false)
+  const [expanded, setExpanded] = React.useState('Kitchen Set')
 
   const handleChange = (panel) => (event, isExpanded) => {
-    setExpanded(isExpanded ? panel : false)
+    setExpanded(isExpanded ? panel : '')
   }
 
   return (
@@ -72,6 +74,7 @@ const MaterialComponent = () => {
               <Accordion
                 expanded={expanded === item.title}
                 onChange={handleChange(item.title)}
+                defaultExpanded
               >
                 <AccordionSummary
                   expandIcon={<ExpandMoreIcon />}
@@ -85,56 +88,60 @@ const MaterialComponent = () => {
                 <AccordionDetails>
                   <Grid container spacing={3}>
                     <Grid item xs={12} md={6}>
-                      <ProductExampleImage src={item.picture} alt="" />
+                      <Zoom opposite when={expanded === item.title}>
+                        <ProductExampleImage src={item.picture} alt="" />
+                      </Zoom>
                     </Grid>
                     <Grid item xs={12} md={6}>
-                      <CustomFlex direction="column" gap="10px">
-                        <CustomText fw="bold" fs="16px" fc="#606060">
-                          {item.name}
-                        </CustomText>
-                        <Divider style={{width: '100%'}} />
-                        <CustomText fs="14px" fc="#a3a3a3">
-                          {item.description}
-                        </CustomText>
-
-                        <CustomFlex gap="10px" padding="20px 0 0 0">
-                          <FeaturedPlayListIcon sx={{color: '#606060'}} />
+                      <Zoom opposite when={expanded === item.title}>
+                        <CustomFlex direction="column" gap="10px">
                           <CustomText fw="bold" fs="16px" fc="#606060">
-                            Fitur-Fitur
+                            {item.name}
                           </CustomText>
-                        </CustomFlex>
-                        <Divider style={{width: '100%'}} />
-                        <Grid container spacing={1}>
-                          {item.feature.map((val) => {
-                            return (
-                              <Grid item xs={12} md={6} key={val}>
-                                <CustomText fs="14px" fc="#a3a3a3">
-                                  &#187; {val}
-                                </CustomText>
-                              </Grid>
-                            )
-                          })}
-                        </Grid>
+                          <Divider style={{width: '100%'}} />
+                          <CustomText fs="14px" fc="#a3a3a3">
+                            {item.description}
+                          </CustomText>
 
-                        <CustomFlex gap="10px" padding="20px 0 0 0">
-                          <RoomPreferencesIcon sx={{color: '#606060'}} />
-                          <CustomText fw="bold" fs="16px" fc="#606060">
-                            Bahan yang digunakan
-                          </CustomText>
+                          <CustomFlex gap="10px" padding="20px 0 0 0">
+                            <FeaturedPlayListIcon sx={{color: '#606060'}} />
+                            <CustomText fw="bold" fs="16px" fc="#606060">
+                              Fitur-Fitur
+                            </CustomText>
+                          </CustomFlex>
+                          <Divider style={{width: '100%'}} />
+                          <Grid container spacing={1}>
+                            {item.feature.map((val, i) => {
+                              return (
+                                <Grid item xs={12} md={6} key={i}>
+                                  <CustomText fs="14px" fc="#a3a3a3">
+                                    &#187; {val}
+                                  </CustomText>
+                                </Grid>
+                              )
+                            })}
+                          </Grid>
+
+                          <CustomFlex gap="10px" padding="20px 0 0 0">
+                            <RoomPreferencesIcon sx={{color: '#606060'}} />
+                            <CustomText fw="bold" fs="16px" fc="#606060">
+                              Bahan yang digunakan
+                            </CustomText>
+                          </CustomFlex>
+                          <Divider style={{width: '100%'}} />
+                          <Grid container spacing={1}>
+                            {item.material.map((val, i) => {
+                              return (
+                                <Grid item xs={12} md={6} key={i}>
+                                  <CustomText fs="14px" fc="#a3a3a3">
+                                    &#187; {val}
+                                  </CustomText>
+                                </Grid>
+                              )
+                            })}
+                          </Grid>
                         </CustomFlex>
-                        <Divider style={{width: '100%'}} />
-                        <Grid container spacing={1}>
-                          {item.material.map((val) => {
-                            return (
-                              <Grid item xs={12} md={6} key={val}>
-                                <CustomText fs="14px" fc="#a3a3a3">
-                                  &#187; {val}
-                                </CustomText>
-                              </Grid>
-                            )
-                          })}
-                        </Grid>
-                      </CustomFlex>
+                      </Zoom>
                     </Grid>
                   </Grid>
                 </AccordionDetails>
@@ -143,14 +150,16 @@ const MaterialComponent = () => {
           })}
         </Grid>
         <Grid item xs={12} md={4}>
-          <iframe
-            src="https://www.youtube.com/embed/V8VgHSbv5ew?controls=0&autoplay=1&mute=1"
-            title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-            style={{width: '100%', height: '400px'}}
-          ></iframe>
+          <Zoom>
+            <iframe
+              src="https://www.youtube.com/embed/V8VgHSbv5ew?controls=0&autoplay=1&mute=1"
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              style={{width: '100%', height: '400px'}}
+            ></iframe>
+          </Zoom>
         </Grid>
       </Grid>
     </ContentWrapper>

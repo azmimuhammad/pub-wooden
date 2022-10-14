@@ -53,3 +53,8 @@ export const ContentTitle = styled(Typography)`
 export const ContentText = styled(Typography)`
   color: #aa865a;
 `
+
+export const ProductExampleImage = styled.img`
+  width: 100%;
+  border-radius: 5px;
+`

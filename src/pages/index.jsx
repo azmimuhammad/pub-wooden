@@ -33,9 +33,10 @@ const HomePage = () => {
           bottom: 20,
           left: 'auto',
           position: 'fixed',
+          zIndex: 999,
         }}
       >
-        <WhatsAppIcon />
+        <WhatsAppIcon style={{color: '#fff'}} />
       </Fab>
     </div>
   )

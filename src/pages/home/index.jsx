@@ -2,6 +2,8 @@ import React from 'react'
 import {Grid} from '@mui/material'
 import {CarouselWrapper} from './HomePage.style'
 import {ContentWrapper, CustomFlex, SubTitle1} from '../../config/Global.styles'
+import Fade from 'react-reveal/Fade'
+import Slide from 'react-reveal/Slide'
 
 import CarouselComponent from '../../components/Carousel'
 import HotProductComponent from './HotProduct.component'
@@ -44,19 +46,23 @@ const HomePage = () => {
   return (
     <div>
       <CarouselWrapper>
-        <CarouselComponent />
+        <Fade>
+          <CarouselComponent />
+        </Fade>
       </CarouselWrapper>
       <ContentWrapper style={{marginTop: '10px'}}>
         <Grid container style={{paddingTop: '20px', background: '#F2F2F2'}}>
           {highlight.map((item, i) => {
             return (
               <Grid item xs={12} md={3} key={i}>
-                <CustomFlex gap="20px" justifyContent="center">
-                  {item.icon}
-                  <CustomFlex direction="column" padding="0px 20px 20px 0px">
-                    <SubTitle1>{item.title}</SubTitle1>
+                <Slide right>
+                  <CustomFlex gap="20px" justifyContent="center">
+                    {item.icon}
+                    <CustomFlex direction="column" padding="0px 20px 20px 0px">
+                      <SubTitle1>{item.title}</SubTitle1>
+                    </CustomFlex>
                   </CustomFlex>
-                </CustomFlex>
+                </Slide>
               </Grid>
             )
           })}

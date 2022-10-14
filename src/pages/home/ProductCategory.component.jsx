@@ -1,23 +1,32 @@
 import React from 'react'
-import {Divider, Grid} from '@mui/material'
-import {ContentWrapper, Title} from '../../config/Global.styles'
+import {Divider, Grid, Tooltip} from '@mui/material'
+import {
+  ContentWrapper,
+  Title,
+  CustomFlex,
+  CustomText,
+} from '../../config/Global.styles'
 import {CategoryImage} from './HomePage.style'
+import {Categories} from '../../utils/constans'
+import {tooltipClasses} from '@mui/material/Tooltip'
+import {styled} from '@mui/material/styles'
 
-import Cupboard from '../../assets/images/product-category/cupboard.png'
-import Custom from '../../assets/images/product-category/custom.png'
-import DeskSet from '../../assets/images/product-category/desk-set.jpg'
-import KitchenSet from '../../assets/images/product-category/kitchen-set.png'
-import RakGantung from '../../assets/images/product-category/rak-gantung.jpg'
-import Backdrop from '../../assets/images/product-category/backdrop.jpg'
+import Zoom from 'react-reveal/Zoom'
 
-const categories = [
-  {icon: Cupboard},
-  {icon: KitchenSet},
-  {icon: RakGantung},
-  {icon: DeskSet},
-  {icon: Backdrop},
-  {icon: Custom},
-]
+import CheckIcon from '@mui/icons-material/Check'
+import CloseIcon from '@mui/icons-material/Close'
+
+const HtmlTooltip = styled(({className, ...props}) => (
+  <Tooltip {...props} classes={{popper: className}} />
+))(({theme}) => ({
+  [`& .${tooltipClasses.tooltip}`]: {
+    backgroundColor: '#f5f5f9',
+    color: 'rgba(0, 0, 0, 0.87)',
+    width: 550,
+    fontSize: theme.typography.pxToRem(12),
+    border: '1px solid #dadde9',
+  },
+}))
 
 const ProductCategoryComponent = () => {
   return (
@@ -25,10 +34,47 @@ const ProductCategoryComponent = () => {
       <Title marginTop={10}>Kategori Produk</Title>
       <Divider />
       <Grid container>
-        {categories.map((item, i) => {
+        {Categories.map((item, i) => {
           return (
             <Grid item xs={6} md={2} key={i} style={{padding: '10px'}}>
-              <CategoryImage src={item.icon} alt="" />
+              <Zoom>
+                <HtmlTooltip
+                  arrow
+                  title={
+                    <CustomFlex direction="column" gap="10px" padding="10px">
+                      <CustomText fw="bold" fs="16px">
+                        {item.name}
+                      </CustomText>
+                      <CustomFlex gap="5px">
+                        {item.isCustomDesign ? (
+                          <CheckIcon sx={{fontSize: 13, color: 'green'}} />
+                        ) : (
+                          <CloseIcon sx={{fontSize: 13, color: 'red'}} />
+                        )}
+                        <CustomText>Custom Desain</CustomText>
+                      </CustomFlex>
+                      <CustomFlex gap="5px">
+                        {item.isCustomSize ? (
+                          <CheckIcon sx={{fontSize: 13, color: 'green'}} />
+                        ) : (
+                          <CloseIcon sx={{fontSize: 13, color: 'red'}} />
+                        )}
+                        <CustomText>Custom Ukuran</CustomText>
+                      </CustomFlex>
+                      <CustomFlex gap="5px">
+                        {item.isCustomMaterial ? (
+                          <CheckIcon sx={{fontSize: 13, color: 'green'}} />
+                        ) : (
+                          <CloseIcon sx={{fontSize: 13, color: 'red'}} />
+                        )}
+                        <CustomText>Bahan Menyesuaikan</CustomText>
+                      </CustomFlex>
+                    </CustomFlex>
+                  }
+                >
+                  <CategoryImage src={item.picture} alt="" />
+                </HtmlTooltip>
+              </Zoom>
             </Grid>
           )
         })}

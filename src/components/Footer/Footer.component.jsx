@@ -9,58 +9,24 @@ import {
   Logo,
 } from './Footer.style'
 import {CustomFlex} from '../../config/Global.styles'
+import {Contact} from '../../utils/constans'
 
-import YouTubeIcon from '@mui/icons-material/YouTube'
-import FacebookIcon from '@mui/icons-material/Facebook'
-import InstagramIcon from '@mui/icons-material/Instagram'
-import EmailIcon from '@mui/icons-material/Email'
-import WhatsAppIcon from '@mui/icons-material/WhatsApp'
-import CallIcon from '@mui/icons-material/Call'
+import Fade from 'react-reveal/Fade'
+
 import LogoIcon from '../../assets/images/logo-square.jpg'
 import LogoTextIcon from '../../assets/images/text-logo.png'
-
-const contact = [
-  {
-    link: 'https://www.facebook.com/mmd.azmi',
-    icon: <FacebookIcon sx={{color: '#4267B2'}} />,
-    name: 'Azmi Muhammad',
-  },
-  {
-    link: 'https://www.instagram.com/mmd_azmi/',
-    icon: <InstagramIcon sx={{color: '#C13584'}} />,
-    name: 'Azmi Muhammad',
-  },
-  {
-    link: 'mailto:azmim@gmail.com',
-    icon: <EmailIcon sx={{color: '#BB001B'}} />,
-    name: 'Azmi Muhammad',
-  },
-  {
-    link: 'https://bit.ly/ChatAzmi',
-    icon: <WhatsAppIcon sx={{color: '##5BF377'}} />,
-    name: 'Azmi Muhammad',
-  },
-  {
-    link: 'https://bit.ly/ChatAzmi',
-    icon: <CallIcon sx={{color: '#282828'}} />,
-    name: 'Azmi Muhammad',
-  },
-  {
-    link: 'https://www.youtube.com/',
-    icon: <YouTubeIcon sx={{color: '#FF0000'}} />,
-    name: 'Azmi Muhammad',
-  },
-]
 
 const FooterComponent = () => {
   return (
     <FooterWrapper>
       <Grid container>
         <Grid item xs={12} md={4}>
-          <Content>
-            <Logo src={LogoIcon} />
-            <TextLogo src={LogoTextIcon} />
-          </Content>
+          <Fade bottom>
+            <Content>
+              <Logo src={LogoIcon} />
+              <TextLogo src={LogoTextIcon} />
+            </Content>
+          </Fade>
         </Grid>
         <Grid item xs={12} md={4}>
           <Content>
@@ -68,41 +34,45 @@ const FooterComponent = () => {
               Kontak Kami
             </Title>
             <Divider style={{width: '50%', alignSelf: 'center'}} />
-            {contact.map((item, i) => {
-              return (
-                <CustomFlex style={{gap: '10px'}} key={i}>
-                  {item.icon}
-                  <LinkContant
-                    href={item.link}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    {item.name}
-                  </LinkContant>
-                </CustomFlex>
-              )
-            })}
+            <Fade bottom>
+              {Contact.map((item, i) => {
+                return (
+                  <CustomFlex style={{gap: '10px'}} key={i}>
+                    {item.icon}
+                    <LinkContant
+                      href={item.link}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {item.name}
+                    </LinkContant>
+                  </CustomFlex>
+                )
+              })}
+            </Fade>
           </Content>
         </Grid>
         <Grid item xs={12} md={4}>
-          <Content>
-            <Title align="center">Alamat</Title>
-            <Divider style={{width: '50%', alignSelf: 'center'}} />
-            <Typography align="center">
-              Jln. Terusan Kaum RT 15/05 Desa Pagaden, Kecamatan Pagaden,
-              Kabupaten Subang - 41252
-            </Typography>
-            <iframe
-              title="address"
-              width="300"
-              height="300"
-              id="gmap_canvas"
-              src="https://maps.google.com/maps?q=GRV4+C88,%20Neglasari,%20Kec.%20Pagaden,%20Kabupaten%20Subang,%20Jawa%20Barat%2041252&t=&z=13&ie=UTF8&iwloc=&output=embed"
-              frameborder="0"
-              scrolling="no"
-              style={{alignSelf: 'center', marginTop: '20px'}}
-            ></iframe>
-          </Content>
+          <Fade bottom>
+            <Content>
+              <Title align="center">Alamat</Title>
+              <Divider style={{width: '50%', alignSelf: 'center'}} />
+              <Typography align="center">
+                Jln. Terusan Kaum RT 15/05 Desa Pagaden, Kecamatan Pagaden,
+                Kabupaten Subang - 41252
+              </Typography>
+              <iframe
+                title="address"
+                width="300"
+                height="300"
+                id="gmap_canvas"
+                src="https://maps.google.com/maps?q=GRV4+C88,%20Neglasari,%20Kec.%20Pagaden,%20Kabupaten%20Subang,%20Jawa%20Barat%2041252&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                frameBorder="0"
+                scrolling="no"
+                style={{alignSelf: 'center', marginTop: '20px'}}
+              ></iframe>
+            </Content>
+          </Fade>
         </Grid>
       </Grid>
     </FooterWrapper>

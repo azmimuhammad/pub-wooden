@@ -1,16 +1,20 @@
 import * as React from 'react'
-import AppBar from '@mui/material/AppBar'
-import Box from '@mui/material/Box'
-import Toolbar from '@mui/material/Toolbar'
-import IconButton from '@mui/material/IconButton'
-import Typography from '@mui/material/Typography'
-import Menu from '@mui/material/Menu'
-import MenuIcon from '@mui/icons-material/Menu'
-import Container from '@mui/material/Container'
-import Button from '@mui/material/Button'
-import MenuItem from '@mui/material/MenuItem'
-import AdbIcon from '@mui/icons-material/Adb'
 import {Link, useNavigate} from 'react-router-dom'
+import {
+  Avatar,
+  AppBar,
+  Box,
+  Toolbar,
+  IconButton,
+  Typography,
+  Menu,
+  Container,
+  Button,
+  MenuItem,
+} from '@mui/material'
+
+import LogoIcon from '../../assets/images/logo-square.jpg'
+import MenuIcon from '@mui/icons-material/Menu'
 
 const pages = [
   {path: '/', name: 'Beranda'},
@@ -43,25 +47,12 @@ const ResponsiveAppBar = () => {
     >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{display: {xs: 'none', md: 'flex'}, mr: 1}} />
-          <Typography
-            variant="h6"
-            noWrap
+          <Avatar
+            src={LogoIcon}
             component={Link}
             to="/"
-            sx={{
-              mr: 2,
-              display: {xs: 'none', md: 'flex'},
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            LOGO
-          </Typography>
-
+            sx={{display: {xs: 'none', md: 'flex'}, mr: 1}}
+          />
           <Box sx={{flexGrow: 1, display: {xs: 'flex', md: 'none'}}}>
             <IconButton
               size="large"
@@ -91,14 +82,19 @@ const ResponsiveAppBar = () => {
                 display: {xs: 'block', md: 'none'},
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={() => onClickMenu(page.path)}>
+              {pages.map((page, i) => (
+                <MenuItem key={i} onClick={() => onClickMenu(page.path)}>
                   <Typography textAlign="center">{page.name}</Typography>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
-          <AdbIcon sx={{display: {xs: 'flex', md: 'none'}, mr: 1}} />
+          <Avatar
+            src={LogoIcon}
+            component={Link}
+            to="/"
+            sx={{display: {xs: 'flex', md: 'none'}, mr: 2}}
+          />
           <Typography
             variant="h5"
             noWrap
@@ -115,12 +111,12 @@ const ResponsiveAppBar = () => {
               textDecoration: 'none',
             }}
           >
-            LOGO
+            PUB WOODEN
           </Typography>
           <Box sx={{flexGrow: 1, display: {xs: 'none', md: 'flex'}}}>
-            {pages.map((page) => (
+            {pages.map((page, i) => (
               <Button
-                key={page}
+                key={i}
                 onClick={() => onClickMenu(page.path)}
                 sx={{
                   my: 2,
