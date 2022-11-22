@@ -2,14 +2,13 @@ import React, {useState} from 'react'
 import {Grid, ImageList, ImageListItem} from '@mui/material'
 import {ContentWrapper, Title} from '../../config/Global.styles'
 import {CategoryImage} from './Catalog.styles'
-import {Categories, productList} from '../../utils/constans'
+import {Categories} from '../../utils/constans/categories'
+import {Galery} from '../../utils/constans'
 
 import DialogDetail from '../../components/Dialog/DialogDetail.component'
 
-import Fade from 'react-reveal/Fade'
-
 const CatalogPage = () => {
-  const [value, setValue] = useState('001')
+  const [value, setValue] = useState(1)
   const [open, setOpen] = useState(false)
   const [detail, setDetail] = useState(null)
 
@@ -24,7 +23,7 @@ const CatalogPage = () => {
   }
 
   const handleChange = (id) => {
-    setValue(String(id))
+    setValue(parseInt(id))
   }
 
   const findCategoryById = (id) => {
@@ -32,7 +31,7 @@ const CatalogPage = () => {
   }
 
   const renderList = () => {
-    const filteredList = productList.filter((val) => val.category === value)
+    const filteredList = Galery.filter((val) => val.category.id === value)
     return filteredList
   }
 
@@ -53,19 +52,22 @@ const CatalogPage = () => {
         })}
       </Grid>
       <Title>{findCategoryById(value).name}</Title>
-      <ImageList variant="masonry" cols={4} gap={8}>
+      <ImageList
+        vsx={{width: 500, height: 450}}
+        variant="woven"
+        cols={4}
+        gap={8}
+      >
         {renderList().map((item) => (
-          <Fade bottom>
-            <ImageListItem key={item.id}>
-              <img
-                src={item.picture}
-                alt={item.name}
-                loading="lazy"
-                style={{cursor: 'pointer'}}
-                onClick={() => onSelectDetail(item)}
-              />
-            </ImageListItem>
-          </Fade>
+          <ImageListItem key={item.id}>
+            <img
+              src={item.picture}
+              alt={item.name}
+              loading="lazy"
+              style={{cursor: 'pointer'}}
+              onClick={() => onSelectDetail(item)}
+            />
+          </ImageListItem>
         ))}
       </ImageList>
       <DialogDetail open={open} onClose={() => onClose()} data={detail} />

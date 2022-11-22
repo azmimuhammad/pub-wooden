@@ -9,7 +9,6 @@ export const CarouselWrapper = styled.div`
 
 export const SummaryWrapper = styled.div`
   border: 1px solid #e0e0e0;
-  height: 90%;
   padding: 2.5%;
   border-radius: 5px;
   text-align: center;

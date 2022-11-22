@@ -1,9 +1,7 @@
 import React, {useState} from 'react'
 import {ImageList, ImageListItem} from '@mui/material'
 import {ContentWrapper} from '../../config/Global.styles'
-import {productList} from '../../utils/constans'
-
-import Fade from 'react-reveal/Fade'
+import {Galery} from '../../utils/constans'
 
 import DialogDetail from '../../components/Dialog/DialogDetail.component'
 
@@ -23,19 +21,22 @@ const GaleryPage = () => {
 
   return (
     <ContentWrapper withPadding>
-      <ImageList variant="masonry" cols={4} gap={8}>
-        {productList.map((item) => (
-          <Fade bottom>
-            <ImageListItem key={item.id}>
-              <img
-                src={item.picture}
-                alt={item.name}
-                loading="lazy"
-                style={{cursor: 'pointer'}}
-                onClick={() => onSelectDetail(item)}
-              />
-            </ImageListItem>
-          </Fade>
+      <ImageList
+        vsx={{width: 500, height: 450}}
+        variant="woven"
+        cols={3}
+        gap={8}
+      >
+        {Galery.map((item) => (
+          <ImageListItem key={item.id}>
+            <img
+              src={item.picture}
+              alt={item.name}
+              loading="lazy"
+              style={{cursor: 'pointer'}}
+              onClick={() => onSelectDetail(item)}
+            />
+          </ImageListItem>
         ))}
       </ImageList>
       <DialogDetail open={open} onClose={() => onClose()} data={detail} />
